@@ -41,7 +41,7 @@ You should expect the following output:
 ('little', 0.005187636), ('gray', 0.0025780434), ('fat', 0.0025481516), ('house', 0.0021788846),
 ('old', 0.0021117083), ('giant', 0.001906771)]
 ```
-Note that Transformers is using the original BERT vocabulary (from *bert-large-uncased-whole-word-masking*), so the *[NONE]* token is displayed as *[unused]*.
+Note that Transformers is using the original BERT vocabulary (from *bert-large-uncased-whole-word-masking*), so the *[NONE]* token is displayed as *[unused0]*.
 
 ## Training your own TerseBERT 
 
