@@ -27,42 +27,32 @@ flags = tf.flags
 
 FLAGS = flags.FLAGS
 
-flags.DEFINE_string("input_file", None,
-										"Input raw text file (or comma-separated list of files).")
+flags.DEFINE_string("input_file", None, "Input raw text file (or comma-separated list of files).")
 
-flags.DEFINE_string(
-		"output_file", None,
-		"Output TF example file (or comma-separated list of files).")
+flags.DEFINE_string("output_file", None, "Output TF example file (or comma-separated list of files).")
 
-flags.DEFINE_string("vocab_file", None,
-										"The vocabulary file that the BERT model was trained on.")
+flags.DEFINE_string("vocab_file", None, "The vocabulary file that the BERT model was trained on.")
 
-flags.DEFINE_bool(
-		"do_lower_case", True,
+flags.DEFINE_bool("do_lower_case", True,
 		"Whether to lower case the input text. Should be True for uncased "
 		"models and False for cased models.")
 
-flags.DEFINE_bool(
-		"do_whole_word_mask", False,
+flags.DEFINE_bool("do_whole_word_mask", False,
 		"Whether to use whole word masking rather than per-WordPiece masking.")
 
 flags.DEFINE_integer("max_seq_length", 128, "Maximum sequence length.")
 
-flags.DEFINE_integer("max_predictions_per_seq", 20,
-										 "Maximum number of masked LM predictions per sequence.")
+flags.DEFINE_integer("max_predictions_per_seq", 20, "Maximum number of masked LM predictions per sequence.")
 
 flags.DEFINE_integer("random_seed", 12345, "Random seed for data generation.")
 
-flags.DEFINE_integer(
-		"dupe_factor", 10,
-		"Number of times to duplicate the input data (with different masks).")
+flags.DEFINE_integer("dupe_factor", 10,	"Number of times to duplicate the input data (with different masks).")
 
 flags.DEFINE_float("masked_lm_prob", 0.15, "Masked LM probability.")
 
 flags.DEFINE_float("mask_none_prob", 0.05, "Masking no token probability.")
 
-flags.DEFINE_float(
-		"short_seq_prob", 0.1,
+flags.DEFINE_float("short_seq_prob", 0.1,
 		"Probability of creating sequences which are shorter than the "
 		"maximum length.")
 
@@ -95,8 +85,7 @@ class TrainingInstance(object):
 		return self.__str__()
 
 
-def write_instance_to_example_files(instances, tokenizer, max_seq_length,
-																		max_predictions_per_seq, output_files):
+def write_instance_to_example_files(instances, tokenizer, max_seq_length, max_predictions_per_seq, output_files):
 	"""Create TF example files from `TrainingInstance`s."""
 	writers = []
 	for output_file in output_files:
@@ -178,9 +167,7 @@ def create_float_feature(values):
 	return feature
 
 
-def create_training_instances(input_files, tokenizer, max_seq_length,
-															dupe_factor, short_seq_prob, masked_lm_prob,none_token_prob,
-															max_predictions_per_seq, rng):
+def create_training_instances(input_files, tokenizer, max_seq_length,dupe_factor, short_seq_prob, masked_lm_prob, none_token_prob, max_predictions_per_seq, rng):
 	"""Create `TrainingInstance`s from raw text."""
 	all_documents = [[]]
 
@@ -231,8 +218,7 @@ def add_none_tokens(tokens,none_token_prob,rng):
 		result.append(tokens[i])
 	return(result)
 
-def create_instances_from_document(
-		all_documents, document_index, max_seq_length, short_seq_prob,
+def create_instances_from_document(all_documents, document_index, max_seq_length, short_seq_prob,
 		masked_lm_prob, none_token_prob, max_predictions_per_seq, vocab_words, rng):
 	"""Creates `TrainingInstance`s for a single document."""
 	document = all_documents[document_index]
@@ -353,8 +339,7 @@ def create_instances_from_document(
 	return instances
 
 
-MaskedLmInstance = collections.namedtuple("MaskedLmInstance",
-																					["index", "label"])
+MaskedLmInstance = collections.namedtuple("MaskedLmInstance", ["index", "label"])
 
 
 def create_masked_lm_predictions(tokens, masked_lm_prob,max_predictions_per_seq, vocab_words, rng):
