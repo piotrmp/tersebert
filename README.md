@@ -52,7 +52,7 @@ To train your own TerseBERT, follow these steps:
 1. Run pretraining in the usual way (in our case 5000 steps was enough).
 1. Convert the returned model [into Hugging Face format](https://huggingface.co/transformers/converting_tensorflow_models.html). 
 
-## License
+## Licence
 
 * Like the original BERT code, the modified pretraining script is licensed under [Apache Licence 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 * The pretrained model is released under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence.
