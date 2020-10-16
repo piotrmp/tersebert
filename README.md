@@ -29,20 +29,16 @@ segments_ids=[0]*len(masked_text)
 tokens_tensor = torch.tensor([indexed_tokens])
 segments_tensors = torch.tensor([segments_ids])
 predictions = model(tokens_tensor, segments_tensors)
-predicted_index = torch.argmax(predictions[0][0][masked_token]).item()
-predicted_token = tokenizer.convert_ids_to_tokens([predicted_index])[0]
 scores=predictions[0][0][masked_token].detach().numpy()
+scores=np.exp(scores)/sum(np.exp(scores))
 tops=(-scores).argsort()[0:10]
-print(list(zip(tokenizer.convert_ids_to_tokens(tops),(np.exp(scores)/sum(np.exp(scores)))[tops])))
+predicted_token = ['[NONE]' if i==1 else tokenizer.convert_ids_to_tokens([i])[0] for i in tops]
+print(list(zip(predicted_token,scores[tops])))
 ```
 You should expect the following output:
 ```
-[('[unused0]', 0.80043215), ('black', 0.057732496), ('white', 0.036740497), ('big', 0.011116397),
-('little', 0.005187636), ('gray', 0.0025780434), ('fat', 0.0025481516), ('house', 0.0021788846),
-('old', 0.0021117083), ('giant', 0.001906771)]
+[('[NONE]', 0.80043215), ('black', 0.057732496), ('white', 0.036740497), ('big', 0.011116397), ('little', 0.005187636), ('gray', 0.0025780434), ('fat', 0.0025481516), ('house', 0.0021788846), ('old', 0.0021117083), ('giant', 0.001906771)]
 ```
-Note that Transformers is using the original BERT vocabulary (from *bert-large-uncased-whole-word-masking*), so the *[NONE]* token is displayed as *[unused0]*.
-
 ## Training your own TerseBERT 
 
 To train your own TerseBERT, follow these steps:
