@@ -1,10 +1,10 @@
 # TerseBERT
 
-This repository contains information and code for **TerseBERT**, a pretrained language model created by fine-tuning [BERT](https://github.com/google-research/bert). TerseBERT is not only able to predict which word is most likely in a given context (like a regular language model), but if any word is necessary at all. It was created as a component of a text simplification solution described in the article *[Multi-Word Lexical Simplification](https://github.com/piotrmp/tersebert/blob/main/Multi-Word_Lexical_Simplification_Coling2020.pdf)* presented at the [COLING 2020](https://coling2020.org/) conference in Barcelona.
+This repository contains information and code for **TerseBERT**, a pretrained language model created by fine-tuning [BERT](https://github.com/google-research/bert). TerseBERT is not only able to predict which word is most likely in a given context (like a regular language model), but if any word is necessary at all. It was created as a component of a text simplification solution described in the article *[Multi-Word Lexical Simplification](https://www.aclweb.org/anthology/2020.coling-main.123.pdf)* presented at the [COLING 2020](https://coling2020.org/) conference in Barcelona.
 
 For example, consider the sentence *The fat cat sat on the mat.* If we mask the word *mat* and ask for the most likely predictions, both BERT and TerseBERT suggest *floor*, *bed*, *table*, etc. If we mask the word *fat*, BERT proposes *black*, *white*, *big*, while TerseBERT offers the same predictions, but also reports a high probability (80%) of *[NONE]* token. This indicates the sentence is likely to have no words in the selected location, as we can simply say *The cat sat on the mat.*
 
-This document is a guide for obtaining, training and using a TerseBERT model. If you need any more information consult [the paper](https://www.aclweb.org/anthology/TODO.pdf) or contact its authors! 
+This document is a guide for obtaining, training and using a TerseBERT model. If you need any more information consult [the paper](https://www.aclweb.org/anthology/2020.coling-main.123.pdf) or contact its authors! 
 
 ## Obtaining and using TerseBERT
 
@@ -54,18 +54,21 @@ To train your own TerseBERT, follow these steps:
 * The pretrained model is released under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence.
 
 
+
 ## Citation
 
-Przybyła, P. and Shardlow, M., 2020, December. Multi-Word Lexical Simplification. In Proceedings of the 28th International Conference on Computational Linguistics.
+Przybyła, P. and Shardlow, M., 2020. Multi-Word Lexical Simplification. In Proceedings of the 28th International Conference on Computational Linguistics (COLING 2020).
 
 
     @inproceedings{plainifier,
         title = "Multi-Word Lexical Simplification",
-        author = {Przyby{\l}a, Piotr and Shardlow, Matthew},
-        booktitle = "Proceedings of the 28th International Conference on Computational Linguistics",
+        author = {Przyby{\l}a, Piotr and Shardlow, Matthew}",
+        booktitle = {Proceedings of the 28th International Conference on Computational Linguistics (COLING 2020)},
         month = dec,
         year = "2020",
         address = "Barcelona, Spain",
-        publisher = "Association for Computational Linguistics",
+        publisher = {International Committee on Computational Linguistics},
+        pages = {1435--1446},
+        url = {https://www.aclweb.org/anthology/2020.coling-main.0}
     }
 
