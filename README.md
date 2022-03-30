@@ -8,7 +8,7 @@ This document is a guide for obtaining, training and using a TerseBERT model. If
 
 ## Obtaining and using TerseBERT
 
-The TerseBERT model trained for the study mentioned above is available in [Hugging Face Transformers](https://github.com/huggingface/transformers) format for download [here](http://homados.ipipan.waw.pl/tersebert-data/tersebert_pytorch_1_0.bin) (1.3 GB). Provided you have [PyTorch](https://pytorch.org/) and [NumPy](https://numpy.org/) installed, you can invoke TerseBERT in the following way:
+The TerseBERT model trained for the study mentioned above is available in [Hugging Face Transformers](https://github.com/huggingface/transformers) format for download [here](https://homados.ipipan.waw.pl/tersebert-data/tersebert_pytorch_1_0.bin) (1.3 GB). Provided you have [PyTorch](https://pytorch.org/) and [NumPy](https://numpy.org/) installed, you can invoke TerseBERT in the following way:
 ```python
 import torch
 import numpy as np
